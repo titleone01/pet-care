@@ -2,8 +2,10 @@ import { BookingForm } from "@/components/BookingForm";
 import { InteriorsCarousel } from "@/components/InteriorsCarousel";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SiteHeader } from "@/components/SiteHeader";
+import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
 import {
   careFeatures,
+  customerReviews,
   facts,
   interiorSlides,
   priceRows,
@@ -160,6 +162,21 @@ export default function Home() {
               <p>接待、洗护、造型三个区域独立分区，保持温暖、安静、干净的到店体验。</p>
             </RevealOnScroll>
             <InteriorsCarousel slides={interiorSlides} />
+          </div>
+        </section>
+
+        <section className="section testimonials-section" id="reviews" aria-label="客户评价">
+          <div className="wrap">
+            <RevealOnScroll className="section-head">
+              <div>
+                <p className="section-kicker">Reviews</p>
+                <h2>回头客怎么说</h2>
+              </div>
+              <p>
+                这些反馈来自不同体型、不同性格的犬猫家长，重点记录他们最在意的安抚、透明沟通和护理效果。
+              </p>
+            </RevealOnScroll>
+            <TestimonialsCarousel reviews={customerReviews} />
           </div>
         </section>
 

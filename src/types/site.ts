@@ -27,6 +27,16 @@ export type InteriorSlide = {
   dotLabel: string;
 };
 
+export type CustomerReview = {
+  name: string;
+  pet: string;
+  service: string;
+  date: string;
+  rating: string;
+  quote: string;
+  highlight: string;
+};
+
 export type SelectOption<T extends string = string> = {
   value: T;
   label: string;

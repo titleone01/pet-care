@@ -1,4 +1,5 @@
 import type {
+  CustomerReview,
   InteriorSlide,
   PetSize,
   PetType,
@@ -129,6 +130,69 @@ export const interiorSlides: InteriorSlide[] = [
     title: "造型修剪区",
     description: "升降美容台、工具抽屉和独立烘干柜，支撑精修造型和一宠一消毒流程。",
     dotLabel: "查看造型修剪区"
+  }
+];
+
+export const customerReviews: CustomerReview[] = [
+  {
+    name: "林女士",
+    pet: "布偶猫 · 奶盖",
+    service: "猫咪低刺激洗护",
+    date: "2026.05",
+    rating: "5.0",
+    quote:
+      "奶盖很怕吹风，之前洗澡都要躲两天。这次美容师先让它闻工具、慢慢适应，回家后毛很蓬松，也没有应激。",
+    highlight: "怕吹风的猫也能稳定完成"
+  },
+  {
+    name: "周先生",
+    pet: "柯基 · 豆包",
+    service: "基础洁净洗护",
+    date: "2026.05",
+    rating: "5.0",
+    quote:
+      "会把耳朵、脚底和皮肤状态拍照发给我，哪里有红点也讲得很清楚。价格和预约时一致，不会临时加项目。",
+    highlight: "护理记录透明"
+  },
+  {
+    name: "陈女士",
+    pet: "泰迪 · 摩卡",
+    service: "精修造型套餐",
+    date: "2026.04",
+    rating: "4.9",
+    quote:
+      "造型前会先确认想要的长度和脸型，剪完很自然，不是模板感。摩卡这次眼周和脚脚都修得特别干净。",
+    highlight: "造型沟通细"
+  },
+  {
+    name: "赵先生",
+    pet: "金毛 · 小麦",
+    service: "中大型犬洗护",
+    date: "2026.04",
+    rating: "5.0",
+    quote:
+      "大狗洗完吹干最怕没吹透，这里会分层梳开检查，接走时底毛也很干爽。店里动线宽，小麦进出不紧张。",
+    highlight: "大狗吹干更彻底"
+  },
+  {
+    name: "许女士",
+    pet: "比熊 · 糯米",
+    service: "皮毛舒缓护理",
+    date: "2026.03",
+    rating: "5.0",
+    quote:
+      "糯米换毛期总打结，美容师没有硬扯，边梳边安抚，还教我回家怎么梳胸口和腋下，第二天毛还是软软的。",
+    highlight: "毛结处理温柔"
+  },
+  {
+    name: "王女士",
+    pet: "柴犬 · 阿柴",
+    service: "除味护理加护",
+    date: "2026.03",
+    rating: "4.9",
+    quote:
+      "柴犬掉毛季太夸张了，洗完明显清爽很多，车里也没有那股潮味。预约时间准，接送都不用等太久。",
+    highlight: "掉毛季很省心"
   }
 ];
 

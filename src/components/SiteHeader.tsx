@@ -44,6 +44,9 @@ export function SiteHeader() {
           <a href="#pricing" onClick={closeMenu}>
             价目表
           </a>
+          <a href="#reviews" onClick={closeMenu}>
+            客户评价
+          </a>
           <a href="#booking" onClick={closeMenu}>
             预约到店
           </a>

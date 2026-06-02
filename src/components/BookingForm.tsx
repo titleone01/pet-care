@@ -61,6 +61,7 @@ export function BookingForm() {
     date: defaultArrivalTime
   }));
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const estimatePrice = useMemo(() => {
     const servicePrice = basePrices[form.service];
@@ -80,23 +81,61 @@ export function BookingForm() {
     }));
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const name = form.name.trim();
     const phone = form.phone.trim();
+    const arrivalDate = new Date(form.date);
 
     if (!name || !phone) {
       setMessage("请留下联系人和电话，方便门店确认档期。");
       return;
     }
 
-    setMessage(
-      `已收到预约信息，${name}，门店会优先为你保留 ${formatArrivalTime(form.date)} 的合适档期。`
-    );
-    setForm({
-      ...defaultFormState,
-      date: defaultArrivalTime
-    });
+    if (Number.isNaN(arrivalDate.getTime())) {
+      setMessage("请选择正确的期望到店时间。");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setMessage("正在提交预约...");
+
+    try {
+      const response = await fetch("/api/bookings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          petType: form.petType,
+          petSize: form.petSize,
+          service: form.service,
+          arrivalTime: arrivalDate.toISOString(),
+          name,
+          phone,
+          note: form.note.trim(),
+          estimatedPrice: estimatePrice
+        })
+      });
+      const result = (await response.json().catch(() => null)) as { message?: string } | null;
+
+      if (!response.ok) {
+        setMessage(result?.message ?? "预约提交失败，请稍后再试。");
+        return;
+      }
+
+      setMessage(
+        `已收到预约信息，${name}，门店会优先为你保留 ${formatArrivalTime(form.date)} 的合适档期。`
+      );
+      setForm({
+        ...defaultFormState,
+        date: defaultArrivalTime
+      });
+    } catch {
+      setMessage("预约提交失败，请检查网络后再试。");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -201,8 +240,8 @@ export function BookingForm() {
           <span>当前预估价格</span>
           <strong id="estimatePrice">¥{estimatePrice} 起</strong>
         </div>
-        <button className="button" type="submit">
-          提交预约
+        <button className="button" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "提交中..." : "提交预约"}
         </button>
         <p className="form-message" id="formMessage" role="status">
           {message}

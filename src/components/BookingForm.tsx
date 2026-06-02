@@ -136,12 +136,13 @@ export function BookingForm() {
             </select>
           </div>
           <div className="field">
-            <label htmlFor="date">到店日期</label>
+            <label htmlFor="date">期望到店日期</label>
             <input
               id="date"
               name="date"
               type="date"
               min={minDate}
+              required
               value={form.date}
               onChange={(event) => updateField("date", event.target.value)}
             />

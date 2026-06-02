@@ -185,6 +185,39 @@ export default function Home() {
             <BookingForm />
 
             <RevealOnScroll as="aside" className="contact-panel">
+              <div className="contact-info">
+                <div className="map-caption">
+                  <h3>
+                    宜川路街道店 · <span className="nowrap">陕西北路 1620 号</span>
+                  </h3>
+                  <p>沿陕西北路到店，靠近昌平路与江宁路一带，按地图上的爪印标记即可找到门店。</p>
+                </div>
+
+                <div className="contact-list">
+                  <div className="contact-item">
+                    <span className="feature-icon">地</span>
+                    <div>
+                      <b>门店地址</b>
+                      <span>上海市宜川路街道陕西北路 1620 号</span>
+                    </div>
+                  </div>
+                  <div className="contact-item">
+                    <span className="feature-icon">时</span>
+                    <div>
+                      <b>营业时间</b>
+                      <span>周一至周五 10:00-21:00，周末 9:30-20:30</span>
+                    </div>
+                  </div>
+                  <div className="contact-item">
+                    <span className="feature-icon">电</span>
+                    <div>
+                      <b>预约电话</b>
+                      <a href="tel:400-820-6620">400-820-6620</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="contact-map">
                 <img
                   className="store-map"
@@ -192,35 +225,6 @@ export default function Home() {
                   alt="泡泡爪宠物洗护位于上海市宜川路街道陕西北路 1620 号的 AI 手绘位置示意地图"
                   loading="lazy"
                 />
-                <div className="map-caption">
-                  <h3>
-                    宜川路街道店 · <span className="nowrap">陕西北路 1620 号</span>
-                  </h3>
-                  <p>沿陕西北路到店，靠近昌平路与江宁路一带，按地图上的爪印标记即可找到门店。</p>
-                </div>
-              </div>
-              <div className="contact-list">
-                <div className="contact-item">
-                  <span className="feature-icon">地</span>
-                  <div>
-                    <b>门店地址</b>
-                    <span>上海市宜川路街道陕西北路 1620 号</span>
-                  </div>
-                </div>
-                <div className="contact-item">
-                  <span className="feature-icon">时</span>
-                  <div>
-                    <b>营业时间</b>
-                    <span>周一至周五 10:00-21:00，周末 9:30-20:30</span>
-                  </div>
-                </div>
-                <div className="contact-item">
-                  <span className="feature-icon">电</span>
-                  <div>
-                    <b>预约电话</b>
-                    <a href="tel:400-820-6620">400-820-6620</a>
-                  </div>
-                </div>
               </div>
             </RevealOnScroll>
           </div>

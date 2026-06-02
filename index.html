@@ -721,8 +721,8 @@
 
     .booking-shell {
       display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
-      gap: 28px;
+      grid-template-columns: 1fr;
+      gap: 24px;
       align-items: start;
     }
 
@@ -830,24 +830,32 @@
 
     .contact-panel {
       overflow: hidden;
+      display: grid;
+    }
+
+    .contact-info {
+      display: grid;
+      gap: 22px;
+      padding: 24px;
     }
 
     .contact-map {
+      border-top: 1px solid var(--line);
       background: #f5fbf6;
     }
 
     .store-map {
-      aspect-ratio: 60 / 38;
-      border-bottom: 1px solid var(--line);
-      object-fit: cover;
+      aspect-ratio: 1576 / 998;
+      height: auto;
+      object-fit: contain;
     }
 
     .map-caption {
-      padding: 20px 24px 22px;
+      padding: 0;
     }
 
     .map-caption h3 {
-      max-width: 520px;
+      max-width: none;
       margin-bottom: 8px;
       color: var(--ink);
       font-size: clamp(21px, 2.4vw, 28px);
@@ -855,7 +863,7 @@
     }
 
     .map-caption p {
-      max-width: 460px;
+      max-width: 680px;
       margin-bottom: 0;
       color: var(--muted);
     }
@@ -866,8 +874,9 @@
 
     .contact-list {
       display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
-      padding: 24px;
+      padding: 0;
     }
 
     .contact-item {
@@ -875,6 +884,7 @@
       grid-template-columns: 34px 1fr;
       gap: 12px;
       align-items: start;
+      min-width: 0;
     }
 
     .contact-item b {
@@ -886,6 +896,7 @@
     .contact-item a {
       color: var(--muted);
       font-size: 14px;
+      overflow-wrap: anywhere;
     }
 
     .footer {
@@ -959,6 +970,10 @@
       .service-grid,
       .split,
       .booking-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-list {
         grid-template-columns: 1fr;
       }
 
@@ -1430,35 +1445,39 @@
         </div>
 
         <aside class="contact-panel reveal">
-          <div class="contact-map">
-            <img class="store-map" src="public/assets/store-map-ai.png" alt="泡泡爪宠物洗护位于上海市宜川路街道陕西北路 1620 号的 AI 手绘位置示意地图" loading="lazy" />
+          <div class="contact-info">
             <div class="map-caption">
               <h3>宜川路街道店 · <span class="nowrap">陕西北路 1620 号</span></h3>
               <p>沿陕西北路到店，靠近昌平路与江宁路一带，按地图上的爪印标记即可找到门店。</p>
             </div>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <span class="feature-icon">地</span>
+                <div>
+                  <b>门店地址</b>
+                  <span>上海市宜川路街道陕西北路 1620 号</span>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="feature-icon">时</span>
+                <div>
+                  <b>营业时间</b>
+                  <span>周一至周五 10:00-21:00，周末 9:30-20:30</span>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="feature-icon">电</span>
+                <div>
+                  <b>预约电话</b>
+                  <a href="tel:400-820-6620">400-820-6620</a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="contact-list">
-            <div class="contact-item">
-              <span class="feature-icon">地</span>
-              <div>
-                <b>门店地址</b>
-                <span>上海市宜川路街道陕西北路 1620 号</span>
-              </div>
-            </div>
-            <div class="contact-item">
-              <span class="feature-icon">时</span>
-              <div>
-                <b>营业时间</b>
-                <span>周一至周五 10:00-21:00，周末 9:30-20:30</span>
-              </div>
-            </div>
-            <div class="contact-item">
-              <span class="feature-icon">电</span>
-              <div>
-                <b>预约电话</b>
-                <a href="tel:400-820-6620">400-820-6620</a>
-              </div>
-            </div>
+
+          <div class="contact-map">
+            <img class="store-map" src="public/assets/store-map-ai.png" alt="泡泡爪宠物洗护位于上海市宜川路街道陕西北路 1620 号的 AI 手绘位置示意地图" loading="lazy" />
           </div>
         </aside>
       </div>

@@ -31,21 +31,34 @@ const defaultFormState: BookingFormState = {
   note: ""
 };
 
-function getTodayValue() {
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, "0");
-  const dd = String(today.getDate()).padStart(2, "0");
+function formatDateTimeLocal(date: Date) {
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const dd = String(date.getDate()).padStart(2, "0");
+  const hh = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
 
-  return `${yyyy}-${mm}-${dd}`;
+  return `${yyyy}-${mm}-${dd}T${hh}:${minutes}`;
+}
+
+function formatArrivalTime(value: string) {
+  return value.replace("T", " ");
+}
+
+function getTomorrowMorningValue() {
+  const tomorrowMorning = new Date();
+  tomorrowMorning.setDate(tomorrowMorning.getDate() + 1);
+  tomorrowMorning.setHours(9, 30, 0, 0);
+
+  return formatDateTimeLocal(tomorrowMorning);
 }
 
 export function BookingForm() {
   const revealRef = useReveal<HTMLDivElement>();
-  const [minDate] = useState(getTodayValue);
+  const [defaultArrivalTime] = useState(getTomorrowMorningValue);
   const [form, setForm] = useState<BookingFormState>(() => ({
     ...defaultFormState,
-    date: minDate
+    date: defaultArrivalTime
   }));
   const [message, setMessage] = useState("");
 
@@ -77,10 +90,12 @@ export function BookingForm() {
       return;
     }
 
-    setMessage(`已收到预约信息，${name}，门店会优先为你保留 ${form.date} 的合适档期。`);
+    setMessage(
+      `已收到预约信息，${name}，门店会优先为你保留 ${formatArrivalTime(form.date)} 的合适档期。`
+    );
     setForm({
       ...defaultFormState,
-      date: minDate
+      date: defaultArrivalTime
     });
   }
 
@@ -136,12 +151,12 @@ export function BookingForm() {
             </select>
           </div>
           <div className="field">
-            <label htmlFor="date">期望到店日期</label>
+            <label htmlFor="date">期望到店时间</label>
             <input
               id="date"
               name="date"
-              type="date"
-              min={minDate}
+              type="datetime-local"
+              min={defaultArrivalTime}
               required
               value={form.date}
               onChange={(event) => updateField("date", event.target.value)}

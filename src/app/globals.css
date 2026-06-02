@@ -731,8 +731,8 @@
 
     .booking-shell {
       display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
-      gap: 28px;
+      grid-template-columns: 1fr;
+      gap: 24px;
       align-items: start;
     }
 
@@ -840,24 +840,32 @@
 
     .contact-panel {
       overflow: hidden;
+      display: grid;
+    }
+
+    .contact-info {
+      display: grid;
+      gap: 22px;
+      padding: 24px;
     }
 
     .contact-map {
+      border-top: 1px solid var(--line);
       background: #f5fbf6;
     }
 
     .store-map {
-      aspect-ratio: 60 / 38;
-      border-bottom: 1px solid var(--line);
-      object-fit: cover;
+      aspect-ratio: 1576 / 998;
+      height: auto;
+      object-fit: contain;
     }
 
     .map-caption {
-      padding: 20px 24px 22px;
+      padding: 0;
     }
 
     .map-caption h3 {
-      max-width: 520px;
+      max-width: none;
       margin-bottom: 8px;
       color: var(--ink);
       font-size: clamp(21px, 2.4vw, 28px);
@@ -865,7 +873,7 @@
     }
 
     .map-caption p {
-      max-width: 460px;
+      max-width: 680px;
       margin-bottom: 0;
       color: var(--muted);
     }
@@ -876,8 +884,9 @@
 
     .contact-list {
       display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
-      padding: 24px;
+      padding: 0;
     }
 
     .contact-item {
@@ -885,6 +894,7 @@
       grid-template-columns: 34px 1fr;
       gap: 12px;
       align-items: start;
+      min-width: 0;
     }
 
     .contact-item b {
@@ -896,6 +906,7 @@
     .contact-item a {
       color: var(--muted);
       font-size: 14px;
+      overflow-wrap: anywhere;
     }
 
     .footer {
@@ -969,6 +980,10 @@
       .service-grid,
       .split,
       .booking-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-list {
         grid-template-columns: 1fr;
       }
 
